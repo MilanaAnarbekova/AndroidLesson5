@@ -18,6 +18,11 @@ public class AdapterCountry extends RecyclerView.Adapter<AdapterCountry.ViewHold
     private OnClick onClick;
     public int hj;
 
+    public AdapterCountry(ArrayList<Country> country, OnClick onClick) {
+        this.country = country;
+        this.onClick = onClick;
+    }
+
     public AdapterCountry() {
     }
 
@@ -35,7 +40,7 @@ public class AdapterCountry extends RecyclerView.Adapter<AdapterCountry.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClick.Listenner(country.get(position));
+                onClick.Listener(country.get(position));
             }
         }
         );
@@ -58,21 +63,23 @@ public class AdapterCountry extends RecyclerView.Adapter<AdapterCountry.ViewHold
         this.country = list;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements OnClick, View.OnClickListener {
 
         private ImageView imageView;
         private TextView continent;
         private TextView city;
-
+        OnClick onClick;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             init(itemView);
+
         }
 
         private void init(View itemView) {
             imageView = itemView.findViewById(R.id.image_1);
             continent = itemView.findViewById(R.id.text_view_1);
             city = itemView.findViewById(R.id.text_view_2);
+
         }
 
         public void Bind(Country country) {
@@ -81,9 +88,21 @@ public class AdapterCountry extends RecyclerView.Adapter<AdapterCountry.ViewHold
             city.setText(country.getCity());
 
         }
+
+        @Override
+        public void Listener(Country country) {
+
+        }
+
+        @Override
+        public void onClick(View v) {
+
+        }
+
     }
     public interface OnClick {
-        void Listenner(Country country);
+        void Listener(Country country);
+
     }
 
 }

@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="132dp"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="21sp"
         android:text="country"
         />
     <TextView
